@@ -20,7 +20,7 @@ class MyHomePage extends StatelessWidget {
   final List<Transaction> transactions = [
     Transaction(
       id: "t1",
-      title: "Neue Schuhe",
+      title: "shoes",
       amount: 69.99,
       date: DateTime.now(),
     ),
@@ -38,7 +38,35 @@ class MyHomePage extends StatelessWidget {
       body: Column(
           children: transactions.map((tx) {
         return Card(
-          child: Text(tx.title),
+          child: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1.5,
+                  ),
+                ),
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  tx.amount.toString(),
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Column(
+                children: <Widget>[
+                  Text(tx.title),
+                  Text(
+                    tx.date.toString(),
+                  )
+                ],
+              )
+            ],
+          ),
         );
       }).toList()),
     );
