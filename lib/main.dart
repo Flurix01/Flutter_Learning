@@ -47,21 +47,36 @@ class MyHomePage extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.black,
+                    color: Colors.purple,
                     width: 1.5,
                   ),
                 ),
                 padding: EdgeInsets.all(10),
                 child: Text(
-                  tx.amount.toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  "${tx.amount}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.purple,
+                  ),
                 ),
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(tx.title),
+                  Text(
+                    tx.title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
                   Text(
                     tx.date.toString(),
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.grey,
+                    ),
                   )
                 ],
               )
