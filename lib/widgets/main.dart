@@ -22,19 +22,24 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              child: Text("Chart"),
-              elevation: 5,
+      appBar: AppBar(
+        title: Text("flutter App"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                child: Text("Chart"),
+                elevation: 5,
+              ),
             ),
-          ),
-          UserTransactions()
-        ],
+            UserTransactions()
+          ],
+        ),
       ),
     );
   }
