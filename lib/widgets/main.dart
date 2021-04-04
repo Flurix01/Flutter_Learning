@@ -3,6 +3,8 @@ import 'package:learningapp/models/transaction.dart';
 import 'package:learningapp/widgets/new_transactions.dart';
 import 'package:learningapp/widgets/transaction_list.dart';
 
+import 'chart.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -44,6 +46,14 @@ class _MyHomePageState extends State<MyHomePage> {
     )*/
   ];
 
+  List<Transaction> get recentTransactions {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(Duration(days: 7)),
+      );
+    }).toList();
+  }
+
   void _addNewTransactions(String txTitle, double txAmount) {
     final newTx = Transaction(
         id: DateTime.now().toString(),
@@ -84,14 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text("Chart"),
-                elevation: 5,
-              ),
-            ),
+            Chart(recentTransactions),
             TransactionList(_userTransactions)
           ],
         ),
